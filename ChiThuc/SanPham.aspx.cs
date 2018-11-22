@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,6 +12,14 @@ namespace ChiThuc
 {
     public partial class SanPham : System.Web.UI.Page
     {
+        public SanPham()
+        {
+            if (sanpham == null || sanpham.Count == 0)
+            {
+                sanpham = (List<DsSanPham>)Application["sanpham"];
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["type"] != null)
@@ -85,7 +96,25 @@ namespace ChiThuc
             Application["giohang"] = arr;
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
 
+        }
 
+        private static List<DsSanPham> giohang;
+        private static List<DsSanPham> sanpham;
+        [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        public static int InsertToCart(int id)
+        {
+            if (giohang == null || giohang.Count == 0) giohang = new List<DsSanPham>();
+            if (sanpham == null || sanpham.Count == 0) sanpham = new List<DsSanPham>();
+            foreach (DsSanPham sp in sanpham)
+            {
+                if (sp.masach == id) { giohang.Add(sp); break; }
+            }
+            var tongtien = 0;
+            //foreach (DsSanPham sp in giohang)
+            //{
+            //    tongtien += 
+            //}
+            return 1;
         }
     }
 }

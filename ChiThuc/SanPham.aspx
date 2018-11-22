@@ -24,7 +24,8 @@
                                     <div class="caption cntr">
                                         <p><%# Eval("tensach") %></p>
                                         <p><strong><%# Eval("giaban") %>đ</strong></p>
-                                        <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" Text="Thêm vào giỏ hàng" ID="ibtMuaHang" CommandName="ibtMuaHang" />
+                                         <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" Text="Thêm vào giỏ hàng" ID="ibtMuaHang" CommandName="ibtMuaHang" />
+                                        <%--<input type="button" class="shopBtn" value="Thêm vào giỏ hàng" id="ibtMuaHang" onclick="AddToCart(<%# Eval("masach") %>)"></input>--%>
                                     </div>
                                 </div>
                             </div>
@@ -35,4 +36,24 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function AddToCart(idSp) {
+            $.ajax({
+                type: "POST",
+                url: "SanPham.aspx/InsertToCart",
+                data: "{'id': "+idSp +"}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(msg) {
+                    // Do something interesting with msg.d here.
+                }
+            });
+        }
+
+        $( document ).ready(function() {
+            console.log( "document loaded" );
+        });
+    </script>
 </asp:Content>
+
