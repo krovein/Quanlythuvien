@@ -69,7 +69,7 @@
                 <li><a href="Trangchu.aspx">Trang chủ</a> <span class="divider"></span></li>
                 <li class="active">Đăng nhập</li>
             </ul>
-            <h3>Đăng nhập nhé</h3>
+            <h3>Đăng nhập</h3>
             <hr />
             <div class="well">
                 <div class="panel-heading">
