@@ -1,0 +1,226 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="ChiThuc.Master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Bootstrap styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- Customize styles -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- font awesome styles -->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico" />
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing-1.3.min.js"></script>
+    <script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="assets/js/shop.js"></script>
+
+</head>
+<body runat="server">
+    <div id="top"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="topNav">
+                <div class="container">
+                    <div class="alignR">
+                        <div class="pull-left socialNw">
+                            <a href="#"><span class="icon-twitter" style="font-size: 21px"></span></a>
+                            <a href="#"><span class="icon-facebook" style="font-size: 21px"></span></a>
+                            <a href="#"><span class="icon-youtube" style="font-size: 21px"></span></a>
+                            <a href="#"><span class="icon-tumblr" style="font-size: 21px"></span></a>
+                        </div>
+                        <div id="loregisterlogin" runat="server">
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+Lower Header Section 
+-->
+    <div class="container" style="min-height: 650px">
+        <div id="gototop"></div>
+        <header id="header">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <h1>
+                        <a class="logo" href="index.html">
+                            <img src="assets/img/logo.png" alt="bootstrap sexy shop" />
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-md-5 col-sm-6">
+                    <div class="offerNoteWrapper">
+                        <h1 class="dotmark" style="font-family: cursive">Chớ mua hàng tá sách chất đống thành cả pháo đài rồi ngồi nhìn, kiến thức không thể mọc chân từ tìm đến... bộ não gõ cửa xin vào được!
+              
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 alignR">
+                    <p>
+                        <br />
+                        <strong>Hỗ trợ (24/7) :  0800 1234 678 </strong>
+                        <br />
+                        <br />
+
+                        <br />
+                    </p>
+
+                </div>
+            </div>
+        </header>
+
+        <!--
+Navigation Bar Section 
+-->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-menu" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">TRITHUC.SHOP</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="Trangchu.aspx">Trang chủ</a></li>
+                        <li><a href="SanPham.aspx">Danh sách sản phẩm</a></li>
+                        <li><a href="#">Liên hệ với chúng tôi</a></li>
+
+                    </ul>
+                    <form action="#" class="navbar-search pull-left">
+                        <input type="text" name="search" id="search" placeholder="Tìm kiếm sản phẩm" class="search-query span2" />
+                        <button style="height: 33px; width: 33px; margin-left: -5px; margin-top: -1px;"><span class="icon-search"></span></button>
+                    </form>
+                    <div class="nav pull-right" style="padding-top: 14px; margin-right: 7px;">
+                        <a href="GioHang.aspx" style="text-decoration: none;"><span class="icon-shopping-cart" style="margin-right: 3px"></span>Giỏ hàng - <span class="badge badge-warning" style="background-color: #fb6c0b">
+                            <asp:Label ID="TotalPrice" runat="server" Text="Label"></asp:Label>đ</span></a>
+                    </div>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- 
+Body Section 
+-->
+        <div class="row">
+            <div id="sidebar" class="col-md-3">
+                <div class="well well-small" style="border-radius: 10px">
+                    <ul class="nav nav-list">
+                        <asp:Repeater ID="rptChuDe" runat="server" OnItemDataBound="rptChuDe_ItemDataBound">
+                            <ItemTemplate>
+                                <li><a href="SanPham.aspx?type=<%# Eval("MaChuDe") %>" style="padding: 15px 30px;" class="linemenu"><%# Eval("TenChuDe") %>
+                                    <asp:Literal runat="server" ID="ltrSoluong" />
+                                </a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
+<%--                        <li><a href="SanPham.aspx?type=2" style="padding: 15px 37px;" class="linemenu">Sách Kinh Tế (7)</a></li>
+                        <li><a href="SanPham.aspx?type=3" style="padding: 15px 37px;" class="linemenu">Sách Thiếu Nhi (8)</a></li>
+                        <li><a href="SanPham.aspx?type=4" style="padding: 15px 37px;" class="linemenu">Sách Giáo Khoa-Giáo Trình (11)</a></li>
+                        <li><a href="SanPham.aspx?type=5" style="padding: 15px 37px;" class="linemenu">Tạp Chí-Văn Phòng Phẩm (6)</a></li>
+                        <li><a href="SanPham.aspx?type=6" style="padding: 15px 37px;" class="linemenu">Sách Văn Học (10)</a></li>--%>
+
+                        <li style="border: 0">&nbsp;</li>
+                    </ul>
+                </div>
+            </div>
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+    <!--
+Footer
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <footer class="footer">
+                    <div class="row" style="text-align: center">
+                        <div class="col-md-4">
+                            <div class="">
+                                <h3>Liên hệ</h3>
+                            </div>
+                            <div class="footer-static-content">
+                                <ul style="list-style: none; text-align: left">
+                                    <li><span class="icon-location-arrow" style="margin-right: 5px">&nbsp;</span><span>Địa Chỉ:</span> 96 Định Công, Giáp Bát, Hà Nội </li>
+                                    <li style="border: 1px solid white; margin-top: 10px; margin-bottom: 10px"></li>
+                                    <li><span class="icon-envelope-alt" style="margin-right: 5px">&nbsp;</span><span>Email:</span>trithucshop@gmail.com</li>
+                                    <li style="border: 1px solid white; margin-top: 10px; margin-bottom: 10px"></li>
+                                    <li><span class="icon-phone-sign" style="margin-right: 5px">&nbsp;</span><span>Phone:</span>1900636467</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="">
+                                <h3>Hỗ trợ</h3>
+                            </div>
+                            <div class="footer-static-content">
+                                <ul style="list-style: none; text-align: left">
+                                    <li>Phương thức vận chuyển </li>
+                                    <li style="border: 1px solid white; margin-top: 10px; margin-bottom: 10px"></li>
+                                    <li>Phương thức thanh toán</li>
+                                    <li style="border: 1px solid white; margin-top: 10px; margin-bottom: 10px"></li>
+                                    <li>Chính sách đối với khách hàng</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="">
+                                <h3>Dịch vụ</h3>
+                            </div>
+                            <div class="footer-static-content">
+                                <ul style="list-style: none; text-align: left">
+                                    <li>Giới thiệu về TriThuc shop</li>
+                                    <li style="border: 1px solid white; margin-top: 10px; margin-bottom: 10px"></li>
+                                    <li>Chính sách bảo mật</li>
+                                    <li style="border: 1px solid white; margin-top: 10px; margin-bottom: 10px"></li>
+                                    <li>Hệ thông trung tâm nhà sách</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </footer>
+            </div>
+
+            <!-- /container -->
+
+            <div class="copyright">
+                <div class="container text-center">
+
+                    <span>Copyright &copy; 2018<br />
+                        Desgin by Team 5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="gotop"><i class="icon-double-angle-up"></i></a>
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+</body>
+</html>
