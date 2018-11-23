@@ -72,7 +72,7 @@ namespace ChiThuc
             {
                 int maSach = int.Parse(((Button)sender).CommandArgument.ToString());
                 DataTable sachByMaSach = getAllSachByMaSach(maSach);
-                
+
                 string tenSach = sachByMaSach.Rows[0]["TenSach"].ToString();
                 string hinhAnh = sachByMaSach.Rows[0]["AnhBia"].ToString();
                 float giaBan = Convert.ToSingle(sachByMaSach.Rows[0]["GiaBan"].ToString());
@@ -94,7 +94,7 @@ namespace ChiThuc
 
                 //Response.Write("<script>alert('Đã thêm vào giỏ hàng ^.*!...')</script>");
             }
-            
+
         }
 
         private DataTable getAllSachByMaSach(int maSach)
@@ -161,6 +161,16 @@ namespace ChiThuc
                 //throw new Exception("Hàng hóa đã lên hóa đơn ko thể xóa"+ex);
             }
 
+        }
+
+        protected void ListViewNewProducts_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (Session["login"] == null || (Session["login"] != null && (int)Session["login"] != 1))
+            {
+                Button ltr = (Button)e.Item.FindControl("ibtMuaHang");
+                if (ltr != null)
+                    ltr.Visible = false;
+            }
         }
     }
 

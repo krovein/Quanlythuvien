@@ -12,7 +12,7 @@
             <div class="row">
 
                 <form id="formproducts" runat="server">
-                    <asp:ListView ID="ListViewProducts" runat="server">
+                    <asp:ListView ID="ListViewProducts" runat="server" OnItemDataBound="ListViewProducts_ItemDataBound">
                         <ItemTemplate>
                             <div class="col-md-3 col-sm-4 col-xs-6" style="padding-left: 3px; padding-right: 3px; margin-top: 5px">
                                 <div class="thumbnail" style="margin-bottom: 0">
@@ -24,6 +24,9 @@
                                     <div class="caption cntr">
                                         <p><%# Eval("tensach") %></p>
                                         <p><strong><%# Eval("giaban") %>đ</strong></p>
+                                   <%--     <% if (Session["login"] != null && (int)Session["login"] == 1) {
+                                                <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" Text="Thêm vào giỏ hàng" ID="ibtMuaHang" CommandName="ibtMuaHang" />
+                                            } %>--%>
                                          <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" Text="Thêm vào giỏ hàng" ID="ibtMuaHang" CommandName="ibtMuaHang" />
                                         <%--<input type="button" class="shopBtn" value="Thêm vào giỏ hàng" id="ibtMuaHang" onclick="AddToCart(<%# Eval("masach") %>)"></input>--%>
                                     </div>

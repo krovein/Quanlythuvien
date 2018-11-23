@@ -31,7 +31,7 @@ New Products
                 <h3>Sách mới </h3>
                 <hr class="soften" />
                 <div class="row">
-                    <asp:ListView ID="ListViewNewProducts" runat="server" >
+                    <asp:ListView ID="ListViewNewProducts" runat="server" OnItemDataBound="ListViewNewProducts_ItemDataBound" >
                         <ItemTemplate>
                             <div class="col-md-3 col-sm-4 col-xs-6" style="padding-left: 3px; padding-right: 3px">
                                 <div class="thumbnail">
@@ -44,7 +44,7 @@ New Products
                                         <br />
                                         <asp:Label ID="lbGiaBanNew" runat="server"><strong><%# Eval("giaban") %>đ</strong></asp:Label>
                                         <br />
-                                        <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" Text="Thêm vào giỏ hàng" />
+                                        <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" ID="ibtMuaHang" Text="Thêm vào giỏ hàng" />
 
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ New Products
                 <div class="row">
 
 
-                    <asp:ListView ID="ListViewFeaturedProducts" runat="server" >
+                    <asp:ListView ID="ListViewFeaturedProducts" runat="server" OnItemDataBound="ListViewNewProducts_ItemDataBound" >
                         <ItemTemplate>
                             <div class="col-md-3 col-sm-4 col-xs-6" style="padding-left: 3px; padding-right: 3px">
                                 <div class="thumbnail">
@@ -78,7 +78,7 @@ New Products
                                         <asp:Label ID="lbGiaBan" runat="server"><strong><%# Eval("giaban") %>đ</strong></asp:Label>
                                         <br />
                                         <%--<asp:Button ID="ibtMuaHang" runat="server" CommandArgument='<%# Eval("masach") %>' CommandName="ibtMuaHang" CssClass="shopBtn" Text="Thêm vào giỏ hàng" OnClick="btnthemsanpham_Click"/>--%>
-                                        <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click" Text="Thêm vào giỏ hàng" />
+                                        <asp:Button runat="server" CommandArgument='<%# Eval("masach") %>' CssClass="shopBtn" OnClick="btnthemsanpham_Click"  ID="ibtMuaHang" Text="Thêm vào giỏ hàng" />
 
 
                                     </div>

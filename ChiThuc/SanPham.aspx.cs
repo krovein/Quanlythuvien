@@ -12,16 +12,8 @@ namespace ChiThuc
 {
     public partial class SanPham : System.Web.UI.Page
     {
-        public SanPham()
-        {
-            if (sanpham == null || sanpham.Count == 0)
-            {
-                sanpham = (List<DsSanPham>)Application["sanpham"];
-            }
-
-        }
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {          
             if (Request.QueryString["type"] != null)
             {
                 string type = Request.QueryString["type"];
@@ -115,6 +107,16 @@ namespace ChiThuc
             //    tongtien += 
             //}
             return 1;
+        }
+
+        protected void ListViewProducts_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (Session["login"] == null || (Session["login"] != null && (int)Session["login"] != 1))
+            {
+                Button ltr = (Button)e.Item.FindControl("ibtMuaHang");
+                if (ltr != null)
+                    ltr.Visible = false;
+            }
         }
     }
 }
