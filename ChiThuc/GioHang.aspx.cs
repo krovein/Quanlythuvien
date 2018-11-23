@@ -247,5 +247,11 @@ namespace ChiThuc
                 }
             }
         }
+
+        protected void btnXoaGiohang_Click(object sender, EventArgs e)
+        {
+            Session["GioHang"] = null;
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
     }
 }

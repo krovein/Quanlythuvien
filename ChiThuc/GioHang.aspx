@@ -64,9 +64,17 @@
                         </div>
                     </div>
                 </div>
+                <asp:Button runat="server" CssClass="shopBtn btn-large pull-right btn-XoaCart" CommandArgument='<%# Eval("id") %>' Text="Xóa giỏ hàng" ID="btnXoaGiohang" OnClick="btnXoaGiohang_Click" />
                 <asp:Button runat="server" CssClass="shopBtn btn-large pull-right" CommandArgument='<%# Eval("id") %>' Text="Thanh toán" OnClick="btnthanhtoan_Click" />
             </form>
         </div>
     </div>
+    <style type="text/css">
+
+        .btn-XoaCart{
+            margin-right: 10px !important;
+            margin-left: 10px !important;
+        }
+    </style>
 </asp:Content>
 
